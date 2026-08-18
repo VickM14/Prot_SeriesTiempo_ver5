@@ -388,9 +388,9 @@ function actualizarVistaPrevia() {
 
     `;
 
-    
+
     actualizarVistaPreviaSeries();
-    
+
     actualizarGrafica();
 
     actualizarNotas();
@@ -792,92 +792,92 @@ function guardarConfiguracion() {
    RESTABLECER
    ========================================================= */
 
-function limpiarConfiguracion() {
+// function limpiarConfiguracion() {
 
-    if (
-        !confirm(
-            "¿Desea eliminar toda la configuración actual?"
-        )
-    ) {
+//     if (
+//         !confirm(
+//             "¿Desea eliminar toda la configuración actual?"
+//         )
+//     ) {
 
-        return;
+//         return;
 
-    }
-
-
-    series = [];
-
-    datos = [];
+//     }
 
 
-    document.querySelectorAll(
-        "input, textarea"
-    ).forEach(element => {
+//     series = [];
 
-        if (
-            element.type !== "range" &&
-            element.type !== "number"
-        ) {
-
-            element.value = "";
-
-        }
-
-    });
+//     datos = [];
 
 
-    document.getElementById(
-        "titleRow"
-    ).value = 1;
+//     document.querySelectorAll(
+//         "input, textarea"
+//     ).forEach(element => {
+
+//         if (
+//             element.type !== "range" &&
+//             element.type !== "number"
+//         ) {
+
+//             element.value = "";
+
+//         }
+
+//     });
 
 
-    document.getElementById(
-        "titleIndent"
-    ).value = 0;
+//     document.getElementById(
+//         "titleRow"
+//     ).value = 1;
 
 
-    document.getElementById(
-        "indentValue"
-    ).textContent = "0";
+//     document.getElementById(
+//         "titleIndent"
+//     ).value = 0;
 
 
-    document.getElementById(
-        "titleAlignment"
-    ).value = "center";
+//     document.getElementById(
+//         "indentValue"
+//     ).textContent = "0";
 
 
-    renderizarSeries();
-
-    renderizarDatos();
-
-    actualizarVistaPrevia();
-
-}
+//     document.getElementById(
+//         "titleAlignment"
+//     ).value = "center";
 
 
-/* =========================================================
-   FORMULARIO DE SERIE
-   ========================================================= */
+//     renderizarSeries();
 
-function limpiarFormularioSerie() {
+//     renderizarDatos();
 
-    document.getElementById(
-        "seriesId"
-    ).value = "";
+//     actualizarVistaPrevia();
 
-    document.getElementById(
-        "seriesName"
-    ).value = "";
+// }
 
-    document.getElementById(
-        "seriesVariable"
-    ).value = "";
 
-    document.getElementById(
-        "seriesSource"
-    ).value = "";
+// /* =========================================================
+//    FORMULARIO DE SERIE
+//    ========================================================= */
 
-}
+// function limpiarFormularioSerie() {
+
+//     document.getElementById(
+//         "seriesId"
+//     ).value = "";
+
+//     document.getElementById(
+//         "seriesName"
+//     ).value = "";
+
+//     document.getElementById(
+//         "seriesVariable"
+//     ).value = "";
+
+//     document.getElementById(
+//         "seriesSource"
+//     ).value = "";
+
+// }
 
 
 /* =========================================================
@@ -976,62 +976,65 @@ function mostrarMensaje(
     CONFIGURACIÓN GENERAL DE LA SERIE 
 ========================================================= */
 
-let configuracionSerie = { descripcion: "", 
-                            añoBase: "", 
-                            decimales: 2, 
-                            tipoCifra: "", 
-                            periodicidad: "", 
-                            periodoInicio: "", 
-                            periodoFin: "", 
-                            unidad: "" };
+let configuracionSerie = {
+    descripcion: "",
+    añoBase: "",
+    decimales: 2,
+    tipoCifra: "",
+    periodicidad: "",
+    periodoInicio: "",
+    periodoFin: "",
+    unidad: ""
+};
 
 /* ========================================================= 
     AGREGAR CONFIGURACIÓN A PREVISUALIZACIÓN 
-========================================================= */ 
+========================================================= */
 
 function agregarConfiguracionSerie() {
 
-    configuracionSerie = { 
-        descripcion: 
-            document.getElementById("seriesDescription").value.trim(), 
-        añoBase: 
-            document.getElementById("baseYear").value, 
-        decimales: 
-            document.getElementById("decimalPlaces").value, 
-        tipoCifra: 
-            document.getElementById("figureType").value, 
-        periodicidad: 
-            document.getElementById("seriesFrequency").value, 
-        periodoInicio: 
-            document.getElementById("availablePeriodStart").value, 
-        periodoFin: 
-            document.getElementById("availablePeriodEnd").value, 
-        unidad: 
-            document.getElementById("seriesUnit").value }; 
-        
-            actualizarInformacionSerie(); 
-            
-            mostrarMensaje("La configuración de la serie fue enviada a la previsualización.", "success"); 
-} 
+    configuracionSerie = {
+        descripcion:
+            document.getElementById("seriesDescription").value.trim(),
+        añoBase:
+            document.getElementById("baseYear").value,
+        decimales:
+            document.getElementById("decimalPlaces").value,
+        tipoCifra:
+            document.getElementById("figureType").value,
+        periodicidad:
+            document.getElementById("seriesFrequency").value,
+        periodoInicio:
+            document.getElementById("availablePeriodStart").value,
+        periodoFin:
+            document.getElementById("availablePeriodEnd").value,
+        unidad:
+            document.getElementById("seriesUnit").value
+    };
+
+    actualizarInformacionSerie();
+
+    mostrarMensaje("La configuración de la serie fue enviada a la previsualización.", "success");
+}
 
 /* ========================================================= 
     ACTUALIZAR INFORMACIÓN EN PREVISUALIZACIÓN 
-========================================================= */ 
+========================================================= */
 
-function actualizarInformacionSerie() { 
-        
-    const existing = document.getElementById("seriesInformation"); 
-    
-    if (existing) { 
-        
-        existing.remove(); 
-    } 
-    
-    const chartTitle = document.getElementById("previewTitle"); 
-    const information = document.createElement("div"); 
-    
-    information.id = "seriesInformation"; 
-    information.className = "series-information"; 
+function actualizarInformacionSerie() {
+
+    const existing = document.getElementById("seriesInformation");
+
+    if (existing) {
+
+        existing.remove();
+    }
+
+    const chartTitle = document.getElementById("previewTitle");
+    const information = document.createElement("div");
+
+    information.id = "seriesInformation";
+    information.className = "series-information";
     information.innerHTML = ` <div class="series-information-title"> 
                                 <i class="bi bi-info-circle"></i> Información del cuadro / serie </div> <div class="series-information-grid"> 
                                 <div class="series-information-item"> 
@@ -1049,33 +1052,33 @@ function actualizarInformacionSerie() {
                                 <div class="series-information-item"> <div class="series-information-label"> Periodo disponible </div> 
                                 <div class="series-information-value"> ${formatearPeriodo(configuracionSerie.periodoInicio)} - ${formatearPeriodo(configuracionSerie.periodoFin)} </div> </div> 
                                 <div class="series-information-item"> <div class="series-information-label"> Unidad de medida </div> 
-                                <div class="series-information-value"> ${configuracionSerie.unidad || "—"} </div> </div> </div> `; 
-                                
-                                /* * La ficha se coloca inmediatamente después * del título del cuadro. */ 
-                                
-                                chartTitle.insertAdjacentElement("afterend", information); 
-} 
-                                
-                                
+                                <div class="series-information-value"> ${configuracionSerie.unidad || "—"} </div> </div> </div> `;
+
+    /* * La ficha se coloca inmediatamente después * del título del cuadro. */
+
+    chartTitle.insertAdjacentElement("afterend", information);
+}
+
+
 /* ========================================================= 
     FORMATEAR PERIODO 
-========================================================= */ 
+========================================================= */
 
-function formatearPeriodo(periodo) { 
-    
-    if (!periodo) { 
-        return "—"; 
-    } 
-    
-    const partes = periodo.split("-"); 
-    
-    if (partes.length < 2) { 
-        return periodo; 
-    } 
-    
-    const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]; 
-    const año = partes[0]; 
-    const mes = parseInt(partes[1], 10) - 1; if (mes < 0 || mes > 11) { return periodo; } return `${meses[mes]} ${año}`; 
+function formatearPeriodo(periodo) {
+
+    if (!periodo) {
+        return "—";
+    }
+
+    const partes = periodo.split("-");
+
+    if (partes.length < 2) {
+        return periodo;
+    }
+
+    const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+    const año = partes[0];
+    const mes = parseInt(partes[1], 10) - 1; if (mes < 0 || mes > 11) { return periodo; } return `${meses[mes]} ${año}`;
 
 }
 
@@ -1128,7 +1131,7 @@ function obtenerAforesSeleccionadas() {
 
 document.addEventListener(
     "change",
-    function(event) {
+    function (event) {
 
         if (
             event.target.classList.contains(
@@ -1534,11 +1537,10 @@ function renderizarNodoSerie(
 
                 <div class="configured-series-title">
 
-                    ${
-                        serie.parentId !== null
-                            ? '<span class="series-parent-indicator">↳</span>'
-                            : ''
-                    }
+                    ${serie.parentId !== null
+            ? '<span class="series-parent-indicator">↳</span>'
+            : ''
+        }
 
                     ${escapeHtml(serie.title)}
 
@@ -1574,13 +1576,13 @@ function renderizarNodoSerie(
         <div class="configured-series-meta mt-2">
 
             ${serie.afores
-                .map(
-                    afore =>
-                        `<span class="badge text-bg-light me-1">
+            .map(
+                afore =>
+                    `<span class="badge text-bg-light me-1">
                             ${escapeHtml(afore)}
                         </span>`
-                )
-                .join("")}
+            )
+            .join("")}
 
         </div>
 
@@ -1901,22 +1903,22 @@ function renderizarSeriePreview(
 
                 <div>
                     ${formatearNumero(
-                        baseValue
-                    )}
+                baseValue
+            )}
                 </div>
 
 
                 <div>
                     ${formatearNumero(
-                        baseValue * 1.035
-                    )}
+                baseValue * 1.035
+            )}
                 </div>
 
 
                 <div>
                     ${formatearNumero(
-                        baseValue * 1.041
-                    )}
+                baseValue * 1.041
+            )}
                 </div>
 
             `;
@@ -1998,10 +2000,10 @@ function formatearNumero(numero) {
 
     const decimals =
         configuracionSerie &&
-        configuracionSerie.decimales !== undefined
+            configuracionSerie.decimales !== undefined
             ? Number(
                 configuracionSerie.decimales
-              )
+            )
             : 0;
 
 
@@ -2018,3 +2020,673 @@ function formatearNumero(numero) {
         );
 
 }
+
+/* =========================================================
+   EXPORTAR A EXCEL
+   ========================================================= */
+
+function exportarExcel() {
+
+    if (seriesDatos.length === 0) {
+
+        mostrarMensaje(
+            "No existen series de datos para exportar.",
+            "warning"
+        );
+
+        return;
+
+    }
+
+
+    const filas =
+        construirDatosExportacion();
+
+
+    const worksheet =
+        XLSX.utils.json_to_sheet(
+            filas
+        );
+
+
+    const workbook =
+        XLSX.utils.book_new();
+
+
+    XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        "Series de datos"
+    );
+
+
+    const titulo =
+        obtenerTituloExportacion();
+
+
+    const nombreArchivo =
+        sanitizarNombreArchivo(
+            titulo
+        );
+
+
+    XLSX.writeFile(
+        workbook,
+        `${nombreArchivo}.xlsx`
+    );
+
+
+    mostrarMensaje(
+        "El archivo Excel fue generado correctamente.",
+        "success"
+    );
+
+}
+
+/* =========================================================
+   CONSTRUIR DATOS DE EXPORTACIÓN
+   ========================================================= */
+
+function construirDatosExportacion() {
+
+    const filas = [];
+
+
+    seriesDatos.forEach(
+        serie => {
+
+            /*
+             * La serie se exporta como un registro.
+             */
+
+            serie.afores.forEach(
+                afore => {
+
+                    filas.push({
+
+                        "Serie":
+                            obtenerRutaSerie(
+                                serie.id
+                            ),
+
+                        "AFORE":
+                            afore,
+
+                        "Sangría":
+                            serie.indent,
+
+                        "Junio 2025":
+                            obtenerValorEjemplo(
+                                serie.id,
+                                0
+                            ),
+
+                        "Mayo 2026":
+                            obtenerValorEjemplo(
+                                serie.id,
+                                0
+                            ) * 1.035,
+
+                        "Junio 2026":
+                            obtenerValorEjemplo(
+                                serie.id,
+                                0
+                            ) * 1.041
+
+                    });
+
+                }
+
+            );
+
+        }
+    );
+
+
+    return filas;
+}
+
+/* =========================================================
+   OBTENER RUTA DE LA SERIE
+   ========================================================= */
+
+function obtenerRutaSerie(id) {
+
+    const serie =
+        seriesDatos.find(
+            item => item.id === id
+        );
+
+
+    if (!serie) {
+
+        return "";
+
+    }
+
+
+    if (serie.parentId === null) {
+
+        return serie.title;
+
+    }
+
+
+    return (
+        obtenerRutaSerie(
+            serie.parentId
+        )
+        +
+        " > "
+        +
+        serie.title
+    );
+
+}
+
+/* =========================================================
+   EXPORTAR CSV
+   ========================================================= */
+
+function exportarCSV() {
+
+    if (seriesDatos.length === 0) {
+
+        mostrarMensaje(
+            "No existen series de datos para exportar.",
+            "warning"
+        );
+
+        return;
+
+    }
+
+
+    const filas =
+        construirDatosExportacion();
+
+
+    if (filas.length === 0) {
+
+        return;
+
+    }
+
+
+    const headers =
+        Object.keys(
+            filas[0]
+        );
+
+
+    const csv = [
+
+        headers.join(","),
+
+        ...filas.map(
+            fila =>
+                headers
+                    .map(
+                        header =>
+                            escaparCSV(
+                                fila[header]
+                            )
+                    )
+                    .join(",")
+        )
+
+    ].join("\n");
+
+
+    const blob =
+        new Blob(
+            [
+                "\uFEFF" + csv
+            ],
+            {
+                type:
+                    "text/csv;charset=utf-8;"
+            }
+        );
+
+
+    descargarArchivo(
+        blob,
+        `${sanitizarNombreArchivo(
+            obtenerTituloExportacion()
+        )}.csv`
+    );
+
+
+    mostrarMensaje(
+        "El archivo CSV fue generado correctamente.",
+        "success"
+    );
+
+}
+
+function escaparCSV(valor) {
+
+    if (
+        valor === null ||
+        valor === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    const texto =
+        String(valor);
+
+
+    if (
+        texto.includes(",") ||
+        texto.includes('"') ||
+        texto.includes("\n")
+    ) {
+
+        return `"${texto.replace(
+            /"/g,
+            '""'
+        )}"`;
+
+    }
+
+
+    return texto;
+
+}
+
+/* =========================================================
+   EXPORTAR PDF
+   ========================================================= */
+
+function exportarPDF() {
+
+    if (seriesDatos.length === 0) {
+
+        mostrarMensaje(
+            "No existen series de datos para exportar.",
+            "warning"
+        );
+
+        return;
+
+    }
+
+
+    const {
+        jsPDF
+    } = window.jspdf;
+
+
+    const doc =
+        new jsPDF({
+            orientation: "landscape",
+            unit: "mm",
+            format: "letter"
+        });
+
+
+    const titulo =
+        obtenerTituloExportacion();
+
+
+    /*
+     * Título
+     */
+
+    doc.setFontSize(15);
+
+    doc.setFont(
+        "helvetica",
+        "bold"
+    );
+
+
+    doc.text(
+        titulo,
+        15,
+        15
+    );
+
+
+    /*
+     * Información general
+     */
+
+    doc.setFontSize(8);
+
+    doc.setFont(
+        "helvetica",
+        "normal"
+    );
+
+
+    let y = 23;
+
+
+    if (
+        configuracionSerie.descripcion
+    ) {
+
+        doc.text(
+            configuracionSerie.descripcion,
+            15,
+            y,
+            {
+                maxWidth: 250
+            }
+        );
+
+        y += 7;
+
+    }
+
+
+    doc.text(
+        `Periodicidad: ${configuracionSerie.periodicidad || "—"
+        }`,
+        15,
+        y
+    );
+
+
+    doc.text(
+        `Unidad: ${configuracionSerie.unidad || "—"
+        }`,
+        100,
+        y
+    );
+
+
+    doc.text(
+        `Año base: ${configuracionSerie.añoBase || "—"
+        }`,
+        180,
+        y
+    );
+
+
+    y += 8;
+
+
+    /*
+     * Tabla
+     */
+
+    const filas =
+        construirDatosExportacion();
+
+
+    const body =
+        filas.map(
+            fila => [
+
+                fila["Serie"],
+
+                fila["AFORE"],
+
+                fila["Junio 2025"],
+
+                fila["Mayo 2026"],
+
+                fila["Junio 2026"]
+
+            ]
+        );
+
+
+    doc.autoTable({
+
+        startY: y,
+
+        head: [[
+
+            "Serie",
+
+            "AFORE",
+
+            "Junio 2025",
+
+            "Mayo 2026",
+
+            "Junio 2026"
+
+        ]],
+
+        body,
+
+        styles: {
+
+            fontSize: 7,
+
+            cellPadding: 2
+
+        },
+
+        headStyles: {
+
+            fontStyle: "bold"
+
+        },
+
+        columnStyles: {
+
+            0: {
+                cellWidth: 85
+            },
+
+            1: {
+                cellWidth: 45
+            },
+
+            2: {
+                halign: "right"
+            },
+
+            3: {
+                halign: "right"
+            },
+
+            4: {
+                halign: "right"
+            }
+
+        }
+
+    });
+
+
+    const nombreArchivo =
+        sanitizarNombreArchivo(
+            titulo
+        );
+
+
+    doc.save(
+        `${nombreArchivo}.pdf`
+    );
+
+
+    mostrarMensaje(
+        "El archivo PDF fue generado correctamente.",
+        "success"
+    );
+
+}
+
+/* =========================================================
+   EXPORTAR IQY
+   ========================================================= */
+
+function exportarIQY() {
+
+    const titulo =
+        obtenerTituloExportacion();
+
+
+    /*
+     * URL del servicio que posteriormente
+     * proporcionará los datos.
+     *
+     * En producción esta URL deberá sustituirse
+     * por el API real del sistema.
+     */
+
+    const url =
+        "https://ejemplo.consar.gob.mx/api/series";
+
+
+    const iqy =
+
+        `WEB
+1
+${url}
+
+Selection=Entire Page
+Formatting=None
+PreFormattedTextToColumns=True
+ConsecutiveDelimitersAsOne=True
+SingleBlockTextImport=False
+DisableDateRecognition=False
+DisableRedirections=False`;
+
+
+    const blob =
+        new Blob(
+            [iqy],
+            {
+                type:
+                    "application/x-iqy"
+            }
+        );
+
+
+    descargarArchivo(
+        blob,
+        `${sanitizarNombreArchivo(
+            titulo
+        )}.iqy`
+    );
+
+
+    mostrarMensaje(
+        "El archivo IQY fue generado correctamente.",
+        "success"
+    );
+
+}
+
+/* =========================================================
+   DESCARGAR ARCHIVO
+   ========================================================= */
+
+function descargarArchivo(
+    blob,
+    nombre
+) {
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const enlace =
+        document.createElement(
+            "a"
+        );
+
+
+    enlace.href = url;
+
+    enlace.download = nombre;
+
+
+    document.body.appendChild(
+        enlace
+    );
+
+
+    enlace.click();
+
+
+    document.body.removeChild(
+        enlace
+    );
+
+
+    URL.revokeObjectURL(
+        url
+    );
+
+}
+
+
+/* =========================================================
+   OBTENER TITULO
+   ========================================================= */
+
+function obtenerTituloExportacion() {
+
+    const titulo =
+        document.getElementById(
+            "previewTitle"
+        );
+
+
+    if (
+        titulo &&
+        titulo.textContent.trim()
+    ) {
+
+        return titulo.textContent.trim();
+
+    }
+
+
+    return "serie_tiempo";
+
+}
+
+
+/* =========================================================
+   SANITIZAR NOMBRE
+   ========================================================= */
+
+function sanitizarNombreArchivo(
+    nombre
+) {
+
+    return nombre
+
+        .normalize("NFD")
+
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+
+        .replace(
+            /[^a-zA-Z0-9_-]+/g,
+            "_"
+        )
+
+        .replace(
+            /^_+|_+$/g,
+            ""
+        )
+
+        .substring(
+            0,
+            80
+        )
+
+        || "serie_tiempo";
+
+}
+
+

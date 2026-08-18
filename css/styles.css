@@ -1238,3 +1238,110 @@ body {
     color: #536574;
 
 }
+
+
+/* =========================================================
+   ACCIONES DE PREVISUALIZACIÓN
+   ========================================================= */
+
+.preview-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =========================================================
+   MENU DE EXPORTACIÓN
+   ========================================================= */
+
+.export-menu {
+
+    min-width: 170px;
+
+    padding: 6px;
+
+    border: 1px solid #dce3e8;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, .10);
+
+}
+
+
+.export-menu .dropdown-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 10px;
+
+    border-radius: 4px;
+
+    color: #405466;
+
+    font-size: 11px;
+
+}
+
+
+.export-menu .dropdown-item:hover {
+
+    background: #f1f5f7;
+
+    color: var(--primary);
+
+}
+
+
+.export-menu .dropdown-item i {
+
+    width: 16px;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .preview-actions {
+
+        justify-content: stretch;
+
+        flex-direction: column;
+
+    }
+
+
+    .preview-actions > * {
+
+        width: 100%;
+
+    }
+
+
+    .preview-actions button {
+
+        width: 100%;
+
+    }
+
+}

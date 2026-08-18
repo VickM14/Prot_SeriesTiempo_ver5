@@ -17,6 +17,7 @@
     <header class="topbar">
         <div class="container-fluid px-4">
             <div class="d-flex align-items-center justify-content-between">
+
                 <div class="d-flex align-items-center gap-3">
                     <div class="brand-icon"> <i class="bi bi-bar-chart-line"></i> </div>
                     <div>
@@ -24,23 +25,28 @@
                         <div class="brand-subtitle"> Configuración y previsualización </div>
                     </div>
                 </div>
-                <div class="header-actions"> <button class="btn btn-outline-light btn-sm"
+
+                <div class="header-actions">
+                    <!-- <button class="btn btn-outline-light btn-sm"
                         onclick="limpiarConfiguracion()"> <i class="bi bi-arrow-counterclockwise"></i> Restablecer
-                    </button> <button class="btn btn-light btn-sm" onclick="guardarConfiguracion()"> <i
-                            class="bi bi-save"></i> Guardar </button> </div>
+                    </button>  -->
+                    <button class="btn btn-light btn-sm" onclick="guardarConfiguracion()"> <i class="bi bi-save"></i>
+                        Guardar
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <main class="main-container">
 
-        <div class="row g-0 workspace"> 
+        <div class="row g-0 workspace">
             <!-- ================================================= -->
-            
-            <!-- PANEL IZQUIERDO --> 
-             
+
+            <!-- PANEL IZQUIERDO -->
+
             <!-- ================================================= -->
-            
+
             <aside class="col-lg-4 col-xl-4 configuration-panel">
                 <div class="panel-header">
                     <div>
@@ -50,7 +56,8 @@
                 </div>
                 <div class="accordion accordion-flush" id="configurationAccordion">
 
-                    <!-- ================================================= --> <!-- 1. TITULO -->
+                    <!-- ================================================= -->
+                    <!-- 1. TITULO -->
                     <!-- ================================================= -->
 
                     <div class="accordion-item">
@@ -87,12 +94,10 @@
                         </div>
                     </div>
 
-                    <!-- ================================================= --> 
-                     
-                    <!-- 2. CONFIGURAR SERIE DE TIEMPO -->
-                    
                     <!-- ================================================= -->
-                    
+                    <!-- 2. CONFIGURAR SERIE DE TIEMPO -->
+                    <!-- ================================================= -->
+
                     <div class="accordion-item">
                         <h2 class="accordion-header"> <button class="accordion-button collapsed" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#sectionSeries"> <span
@@ -521,10 +526,10 @@
                     </div>
 
 
-                    <!-- ================================================= --> 
-                     <!-- 4. NOTAS -->                    
                     <!-- ================================================= -->
-                    
+                    <!-- 4. NOTAS -->
+                    <!-- ================================================= -->
+
                     <div class="accordion-item">
                         <h2 class="accordion-header"> <button class="accordion-button collapsed" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#sectionNotes"> <span
@@ -544,24 +549,72 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
-            
-            </aside> 
-            
-            <!-- ================================================= --> 
-             <!-- PANEL DERECHO -->
+
+            </aside>
+
             <!-- ================================================= -->
-            
+            <!-- PANEL DERECHO -->
+            <!-- ================================================= -->
+
             <section class="col-lg-8 col-xl-8 preview-panel">
                 <div class="preview-header">
                     <div>
                         <h2> <i class="bi bi-display"></i> Previsualización </h2>
                         <p> Así se visualizará el cuadro configurado. </p>
                     </div>
-                    <div class="preview-actions"> <button class="btn btn-outline-secondary btn-sm"
-                            onclick="actualizarVistaPrevia()"> <i class="bi bi-arrow-clockwise"></i> Actualizar
-                        </button> <button class="btn btn-primary btn-sm" onclick="vistaCompleta()"> <i
-                                class="bi bi-arrows-fullscreen"></i> Vista completa </button> </div>
+
+                    <!-- ================================================= -->
+                    <!-- ACCIONES DE PREVISUALIZACIÓN -->
+                    <!-- ================================================= -->
+
+                    <div class="preview-actions">
+
+                        <!-- VISTA COMPLETA -->
+                        <button type="button" class="btn btn-outline-primary" onclick="vistaCompleta()">
+                            <i class="bi bi-arrows-fullscreen"></i>
+                            Vista completa
+                        </button>
+
+                        <!-- EXPORTAR -->
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bi bi-download"></i>
+                                Exportar
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end export-menu">
+                                <li>
+                                    <button type="button" class="dropdown-item" onclick="exportarExcel()">
+                                        <i class="bi bi-file-earmark-excel"></i>
+                                        Excel
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item" onclick="exportarPDF()">
+                                        <i class="bi bi-file-earmark-pdf"></i>
+                                        PDF
+                                    </button>
+                                </li>
+
+                                <li>
+                                    <button type="button" class="dropdown-item" onclick="exportarCSV()">
+                                        <i class="bi bi-filetype-csv"></i>
+                                        CSV
+                                    </button>
+                                </li>
+
+                                <li>
+                                    <button type="button" class="dropdown-item" onclick="exportarIQY()">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                        IQY
+                                    </button>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
                 </div>
                 <div class="preview-canvas">
                     <div class="preview-document" id="previewDocument">
@@ -577,8 +630,12 @@
                     </div>
                 </div>
             </section>
+
         </div>
-    </main> <!-- Modal de vista completa -->
+    </main>
+
+    <!-- Modal de vista completa -->
+
     <div class="modal fade" id="fullPreviewModal" tabindex="-1">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
@@ -589,11 +646,28 @@
                 <div class="modal-body" id="fullPreviewContent"> </div>
             </div>
         </div>
-    </div> <!-- Bootstrap -->
+    </div>
+
+    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"> </script>
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"> </script> <!-- Aplicación -->
+
+    <!-- SheetJS - Excel -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js">
+    </script>
+
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+    </script>
+
+    <!-- AutoTable para generar tablas en PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js">
+    </script>
+
     <script src="js/app.js"></script>
+
 </body>
 
 </html>
